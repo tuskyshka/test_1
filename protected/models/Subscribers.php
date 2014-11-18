@@ -75,4 +75,14 @@ class Subscribers extends CActiveRecord
         ));
     }
 
+    public function beforeSave()
+    {
+
+        // Если запись новая - поставить статус Подписан
+        if ($this->isNewRecord)
+            $this->status = self::STATUS_SUBSCRIBED;
+
+        return parent::beforeSave();
+
+    }
 }

@@ -4,8 +4,8 @@ class Subscribers extends CActiveRecord
 {
 
     const
-        STATUS_NOT_SUBSCRIBED = 0,
-        STATUS_SUBSCRIBED = 1;
+        STATUS_NOT_SUBSCRIBED = 0, // Не подписан
+        STATUS_SUBSCRIBED = 1; // Подписан
 
     public function tableName()
     {
@@ -16,6 +16,23 @@ class Subscribers extends CActiveRecord
     {
 
         return array(
+
+            // Ограничить максимальную длинну до 250 символов
+            array('email', 'length', 'max' => 250),
+
+            // Проверить формат email на валидность
+            array('email', 'CEmailValidator',
+                'allowEmpty' => false,
+                'checkMX' => true,
+                'message' => 'Неправильный e-mail'),
+
+            // Проверить email на уникальность в таблице подписчиков
+            array('email', 'CUniqueValidator',
+                'allowEmpty' => false,
+                'attributeName' => 'email',
+                'caseSensitive' => false,
+                'className' => 'Subscribers',
+                'message' => 'Такой e-mail уже добавлен'),
 
             array('email', 'filter', 'filter' => 'trim'),
 

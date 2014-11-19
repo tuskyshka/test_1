@@ -47,6 +47,7 @@ class Subscribers extends CActiveRecord
             'CTimestampBehavior' => array(
                 'class' => 'zii.behaviors.CTimestampBehavior',
                 'createAttribute' => 'created_date',
+                'updateAttribute' => 'updated_date'
             )
         );
     }
@@ -58,6 +59,7 @@ class Subscribers extends CActiveRecord
             'email' => 'Email',
             'status' => 'Status',
             'created_date' => 'Created Date',
+            'updateed_date' => 'Updated Date',
         );
     }
 
@@ -86,6 +88,11 @@ class Subscribers extends CActiveRecord
 
     }
 
+    public static function model($className=__CLASS__)
+    {
+        return parent::model($className);
+    }
+
     public function subscribe(){
 
         if ($this->id === null)
@@ -102,7 +109,6 @@ class Subscribers extends CActiveRecord
             return false;
 
         $this->status = self::STATUS_NOT_SUBSCRIBED;
-
         return $this->save();
 
     }

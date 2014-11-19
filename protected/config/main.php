@@ -37,14 +37,15 @@ return array(
             'allowAutoLogin' => true,
         ),
 
-//        'urlManager' => array(
-//            'urlFormat' => 'path',
-//            'rules' => array(
-//                '<controller:\w+>/<id:\d+>' => '<controller>/view',
-//                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-//                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-//            ),
-//        ),
+        'urlManager' => array(
+            'showScriptName' => false,
+            'urlFormat' => 'path',
+            'rules' => array(
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+            ),
+        ),
 
         'db' => array(
             'connectionString' => 'mysql:host=localhost;dbname=test_1',

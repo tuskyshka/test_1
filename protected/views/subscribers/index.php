@@ -1,6 +1,6 @@
 <div class="container">
 
-    <form class="form-signin" name="subscribe" role="form" method="POST" action="/test_1/index.php?r=subscribers/create">
+    <form class="form-signin" name="subscribe" role="form" method="POST" action="/subscribers/create">
         <h2 class="form-signin-heading">Подписка на рассылку</h2>
         <label for="inputEmail">Email</label>
         <div><input type="text" name="email" id="inputEmail" class="form-control" placeholder="Email"></div>

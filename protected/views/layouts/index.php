@@ -53,7 +53,7 @@
             $.ajax({
                 type: 'POST',
                 data: form.serialize(),
-                url: '/test_1/index.php?r=subscribers/create',
+                url: '/subscribers/create',
                 error: function() {},
                 success: function(reply) {
 

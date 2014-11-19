@@ -38,12 +38,27 @@ class SubscribersController extends Controller
 
         }
 
-        $this->redirect('/test_1/index.php?r=subscribers/index');
+        $this->redirect('/subscribers');
 
     }
 
 
-    public function actionSubscribe($id){}
-    public function actionUnsubscribe($id){}
+    public function actionSubscribe($id){
+
+        $subscriber = Subscribers::model()->findByPk($id);
+
+        if ($subscriber!==NULL)
+            var_dump($subscriber);
+
+    }
+
+    public function actionUnsubscribe($id){
+
+        $subscriber = Subscribers::model()->findByPk($id);
+
+        if ($subscriber!==NULL)
+            $subscriber->unsubscribe();
+
+    }
 
 }

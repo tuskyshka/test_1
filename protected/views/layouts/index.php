@@ -95,8 +95,39 @@
             setTimeout(function(){ el.tooltip('destroy'); }, 1500);
         };
 
+        $('a.subscribeAction').on('click', function(e){
+
+            e.preventDefault();
+            subscribe($(this));
+
+        });
 
 
+        var subscribe = function(el) {
+
+            $.ajax({
+                url: el.attr('href'),
+                error: function(){},
+                success: function(reply) {
+
+                    if (reply.state == true) {
+                        if ( reply.data.status == 0 ) {
+                            el.text('Подписать');
+                            el.prevAll('span.status:first').text('отписан');
+                        }
+
+                        if ( reply.data.status == 1 ) {
+                            el.text('Отписать');
+                            el.prevAll('span.status:first').text('подписан');
+                        }
+
+                        el.attr('href', reply.data.link );
+                    }
+
+                }
+            });
+
+        };
 
     });
 

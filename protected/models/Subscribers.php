@@ -85,4 +85,25 @@ class Subscribers extends CActiveRecord
         return parent::beforeSave();
 
     }
+
+    public function subscribe(){
+
+        if ($this->id === null)
+            return false;
+
+        $this->status = self::STATUS_SUBSCRIBED;
+        return $this->save();
+
+    }
+
+    public function unsubscribe(){
+
+        if ($this->id === null)
+            return false;
+
+        $this->status = self::STATUS_NOT_SUBSCRIBED;
+
+        return $this->save();
+
+    }
 }

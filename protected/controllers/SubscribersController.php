@@ -23,7 +23,7 @@ class SubscribersController extends Controller
             if (Yii::app()->request->isAjaxRequest)
                 $this->renderJson($subscriber->id);
 
-            Yii::app()->user->setFlash('success', 'Вы подписаны на рассылку');
+            Yii::app()->user->setFlash('success', 'Р’С‹ РїРѕРґРїРёСЃР°РЅС‹ РЅР° СЂР°СЃСЃС‹Р»РєСѓ');
 
         }
         else
